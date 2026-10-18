@@ -72,10 +72,10 @@
     "release_date": "2026-02-11",
     "links": {
       "model_card": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/zai-org/GLM-5",
       "api": null
     },
-    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+    "notes": "Weights are on Hugging Face under MIT. Release date remains the SWE-bench Verified leaderboard date."
   },
   {
     "id": "gpt-5-mini",
@@ -150,10 +150,10 @@
     "release_date": "2026-01-27",
     "links": {
       "model_card": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/moonshotai/Kimi-K2.5",
       "api": null
     },
-    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+    "notes": "Weights are on Hugging Face. Release date remains the SWE-bench Verified leaderboard date."
   },
   {
     "id": "minimax-m2-5",
@@ -163,10 +163,10 @@
     "release_date": "2026-02-12",
     "links": {
       "model_card": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
       "api": null
     },
-    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+    "notes": "Weights are on Hugging Face. License field is other. Release date remains the SWE-bench Verified leaderboard date."
   },
   {
     "id": "qwen3-coder-480b-a35b-instruct",
@@ -198,14 +198,14 @@
     "id": "kimi-k3",
     "name": "Kimi K3",
     "provider": "Moonshot AI",
-    "open_closed": "closed",
+    "open_closed": "open",
     "release_date": "2026-07-16",
     "links": {
       "model_card": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/moonshotai/Kimi-K3",
       "api": null
     },
-    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+    "notes": "Weights are published on Hugging Face. The license field is other, not an unrestricted license. Release date is the ARC Prize modelReleaseDate."
   },
   {
     "id": "claude-fable-5-1",
@@ -302,14 +302,14 @@
     "id": "deepseek-v4-1-flash",
     "name": "DeepSeek V4.1 Flash",
     "provider": "DeepSeek",
-    "open_closed": "closed",
+    "open_closed": "open",
     "release_date": "2026-09-10",
     "links": {
       "model_card": null,
-      "huggingface": null,
+      "huggingface": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
       "api": null
     },
-    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+    "notes": "Weights are on Hugging Face under MIT. Release date matches the ARC Prize row and the Hugging Face creation date."
   },
   {
     "id": "grok-4-7",
@@ -349,5 +349,57 @@
       "api": null
     },
     "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "qwen3-8-27b",
+    "name": "Qwen3.8-27B",
+    "provider": "Qwen",
+    "open_closed": "open",
+    "release_date": "2026-08-05",
+    "links": {
+      "model_card": null,
+      "huggingface": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "api": null
+    },
+    "notes": "Release date is the Hugging Face model creation date. License is Apache-2.0."
+  },
+  {
+    "id": "glm-5-2",
+    "name": "GLM-5.2",
+    "provider": "Z.ai",
+    "open_closed": "open",
+    "release_date": "2026-06-16",
+    "links": {
+      "model_card": null,
+      "huggingface": "https://huggingface.co/zai-org/GLM-5.2",
+      "api": null
+    },
+    "notes": "Release date is the Hugging Face model creation date. License is MIT."
+  },
+  {
+    "id": "glm-5-3",
+    "name": "GLM-5.3",
+    "provider": "Z.ai",
+    "open_closed": "open",
+    "release_date": "2026-08-25",
+    "links": {
+      "model_card": null,
+      "huggingface": "https://huggingface.co/zai-org/GLM-5.3",
+      "api": null
+    },
+    "notes": "Release date is the Hugging Face model creation date. License field is other, not an unrestricted license."
+  },
+  {
+    "id": "kimi-k2-6",
+    "name": "Kimi K2.6",
+    "provider": "Moonshot AI",
+    "open_closed": "open",
+    "release_date": "2026-04-14",
+    "links": {
+      "model_card": null,
+      "huggingface": "https://huggingface.co/moonshotai/Kimi-K2.6",
+      "api": null
+    },
+    "notes": "Release date is the Hugging Face model creation date. License field is other."
   }
 ]

@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-10-18T03:12:28Z",
+  "updated_at": "2026-10-18T03:27:49Z",
   "source": "agent-refresh",
-  "note": "ARC Prize verified board, Scale HLE public board, and Scale SWE-bench Pro public rows with a named harness.",
-  "run_id": "39092776116",
-  "payload_sha256": "4b2fba6a57460e9a35e9e1dec7ed7524343fc83b7c05e9abc8b5785bac768427",
+  "note": "Hugging Face model cards, each lab's own column only.",
+  "run_id": "39093680243",
+  "payload_sha256": "fc1f4c4915ac6cfb66c04386bc597856775cce8c0551fa5f528e301660cef6a0",
   "counts": {
     "benchmarks": 15,
-    "models": 27,
-    "scores": 82,
-    "refusals": 3
+    "models": 31,
+    "scores": 129,
+    "refusals": 0
   }
 }
