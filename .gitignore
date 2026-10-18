@@ -5,3 +5,5 @@ dist/
 .env.*
 *.log
 .opencode/
+refresh-summary.json
+refresh-commit.txt

@@ -1,9 +1,9 @@
 # Design Document: Interpretable Benchmark Explorer
 
-**Version:** 0.2  
+**Version:** 0.3  
 **Date:** October 17, 2026  
-**Status:** Ready to start the prototype  
-**Supersedes:** the 0.1 sketch already in this directory
+**Status:** Prototype in the repository  
+**Supersedes:** the 0.1 sketch and the 0.2 specification
 
 ## 1. Purpose and Problem Statement
 
@@ -420,6 +420,8 @@ Identifiers are stable slugs. Display names can change. Slugs do not, once publi
 
 `saturation_status` is one of `near_ceiling`, `differentiating`, `wide_open`, `unknown`. `score_collection` is `priority` or `page_only` until scores exist, then `seeded`.
 
+`version_policy` is `exact` or `score_defined`. Exact means a score version other than the record's current version is a mismatch (Terminal-Bench 4.0.0). Score-defined means the score names the real test (AIME year, LiveCodeBench window, HLE slice, OSWorld original / verified / 2.0). HLE-Diamond is not the HLE record.
+
 ### 9.2 `data/models.json`
 
 ```json
@@ -561,7 +563,7 @@ Prototype constraints: one person can update a score with a pull request, the si
 | Backend | None |
 | Auth | None |
 | Interpretation | Templates plus curated fields. No model calls at runtime |
-| Hosting | Any static host. Undecided; not required to start |
+| Hosting | GitHub Pages. The refresh action builds and deploys after a valid data commit |
 | Styling | One CSS file or a minimal setup already in the project. No component library unless a later pass needs it |
 
 Why not a database or CMS: provenance is the feature. A score needs a diff, a reviewer, and a commit message more than it needs an admin form.
@@ -585,6 +587,22 @@ Interpretable_Benchmark_Explorer_Design_Doc.md
 ```
 
 Do not generate a second, divergent copy of the interpretation text in React components. Components read `one_sentence` and `how_to_read` from the JSON.
+
+### 11.2 Agent refresh
+
+New model releases and newly collected numbers are not scraped. An agent invokes `.github/workflows/refresh.yml` with `workflow_dispatch`, several times a day if needed, and feeds the data in. The action validates, commits to `main`, rebuilds, and deploys. It does not run on a schedule.
+
+The dispatch input payload is limited to 65,535 characters, so the action accepts three transports. Use only one:
+
+1. `payload_b64` — base64 JSON, for a normal release update that fits under about 60,000 characters of base64.
+2. `inbox_ref` plus `inbox_path` — the agent pushes the JSON to a branch in this repo and the action reads it with `GITHUB_TOKEN`. Use this when the bundle is larger, or the repo is private.
+3. `payload_url` — an https URL the action downloads, capped at 2MB. Not for private or link-local hosts.
+
+Default mode is `upsert`. A partial payload adds or replaces records by id and does not delete the rest. `replace` overwrites only the collections present in the payload, and clearing models or scores requires `allow_empty: true`. Benchmark text is not touched unless `update_benchmarks` is true. Sending benchmarks without that flag fails the run.
+
+The action demotes an existing primary when the payload sets a different primary for the same model, benchmark, and version. Two primaries in one payload fail. A primary with a missing required configuration fails. The site stays on the last good commit.
+
+`dry_run` validates and writes a job summary, then stops. The contract for agents is `docs/agent-refresh.md`.
 
 ## 12. Prototype Scope
 
@@ -677,7 +695,7 @@ These do not block milestones 2–4.
 
 ## 19. Next Action
 
-Milestone 2: add `data/benchmarks.json`, `data/models.json`, and `data/scores.json` as empty arrays, and a validator that encodes the constraints in section 10.4. Do not collect scores in the same change as the schema.
+The prototype, validator, and refresh action are in the repo. The next collection pass is an agent dispatch against `refresh.yml` with sourced scores for the priority eight. Do not invent numbers to fill the empty tables.
 
 ---
 

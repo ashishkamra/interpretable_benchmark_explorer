@@ -1,0 +1,136 @@
+name: Refresh dataset
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload_b64:
+        description: "Base64 JSON bundle. Stay under 60,000 characters. Do not combine with payload_url or inbox_ref."
+        required: false
+        type: string
+      payload_url:
+        description: "HTTPS URL of a JSON bundle. Do not combine with the other payload inputs."
+        required: false
+        type: string
+      inbox_ref:
+        description: "Branch or ref in this repo that holds the JSON bundle."
+        required: false
+        type: string
+      inbox_path:
+        description: "Path on inbox_ref. Defaults to payload.json."
+        required: false
+        type: string
+      dry_run:
+        description: "Validate and report only. Do not commit or deploy."
+        type: boolean
+        default: false
+      commit_message:
+        description: "Optional one-line commit subject. The action writes the body."
+        required: false
+        type: string
+
+# Queue refreshes. Do not cancel one in favor of the next; a cancelled run can drop a dataset commit.
+concurrency:
+  group: site-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Require main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Dispatch refresh.yml against main. Other refs are refused."
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Apply payload
+        env:
+          PAYLOAD_B64: ${{ inputs.payload_b64 }}
+          PAYLOAD_URL: ${{ inputs.payload_url }}
+          INBOX_REF: ${{ inputs.inbox_ref }}
+          INBOX_PATH: ${{ inputs.inbox_path }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+          COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        run: npm run refresh -- --from-env
+
+      - name: Job summary
+        if: always()
+        run: |
+          if [ -f refresh-summary.json ]; then
+            {
+              echo '### Refresh summary'
+              echo
+              echo '```json'
+              cat refresh-summary.json
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit dataset
+        id: commit
+        if: inputs.dry_run != true && success()
+        run: |
+          if [ ! -f refresh-commit.txt ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/benchmarks.json data/models.json data/scores.json data/refusals.json data/manifest.json
+          git commit -F refresh-commit.txt
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Configure Pages
+        if: steps.commit.outputs.changed == 'true'
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          VITE_GITHUB_REPOSITORY: ${{ github.repository }}
+        run: npm run build
+
+      - name: Upload Pages artifact
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Record site URL
+        run: echo "Site: ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"

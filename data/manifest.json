@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-10-17T00:00:00Z",
+  "source": "seed-benchmarks",
+  "note": "Benchmark interpretations seeded from the design document. No model scores yet.",
+  "run_id": null,
+  "payload_sha256": null,
+  "counts": {
+    "benchmarks": 15,
+    "models": 0,
+    "scores": 0,
+    "refusals": 0
+  }
+}
