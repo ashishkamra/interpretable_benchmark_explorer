@@ -25,9 +25,11 @@ export function BenchmarkPage({
       </Layout>
     );
   }
-  const scores = dataset.scores
-    .filter((score) => score.benchmark_id === benchmark.id && score.primary && !score.not_applicable)
-    .sort((a, b) => a.benchmark_version.localeCompare(b.benchmark_version));
+  const reported = dataset.scores
+    .filter((score) => score.benchmark_id === benchmark.id && !score.not_applicable)
+    .sort((a, b) => a.benchmark_version.localeCompare(b.benchmark_version) || a.model_id.localeCompare(b.model_id));
+  const scores = reported.filter((score) => score.primary);
+  const otherScores = reported.filter((score) => !score.primary);
   const refusals = dataset.refusals.filter((refusal) => refusal.benchmark_id === benchmark.id);
   return (
     <Layout base={base} path={path}>
@@ -115,6 +117,48 @@ export function BenchmarkPage({
             </tbody>
           </table>
         </div>
+      ) : null}
+      {otherScores.length > 0 ? (
+        <>
+          <h2>Other reported runs</h2>
+          <p>These numbers are on a cited page, but the configuration is incomplete or another run is the primary. They are not a clean comparison.</p>
+          <div className="table-wrap">
+            <table>
+              <caption>Not primary. Missing harness, split, tools, or version stays visible instead of being filled in.</caption>
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Score</th>
+                  <th>Version</th>
+                  <th>Split</th>
+                  <th>Harness</th>
+                  <th>Badges</th>
+                  <th>Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {otherScores.map((score) => {
+                  const model = dataset.models.find((item) => item.id === score.model_id);
+                  return (
+                    <tr key={score.id}>
+                      <td>
+                        <a href={href(base, `/models/${score.model_id}`)}>{model?.name ?? score.model_id}</a>
+                      </td>
+                      <td>{formatValue(score.value, benchmark)}</td>
+                      <td>{score.benchmark_version}</td>
+                      <td>{score.split ?? "—"}</td>
+                      <td>{score.configuration.harness ?? "not disclosed"}</td>
+                      <td>{badgesFor(score, benchmark, dataset).map((badge) => badge.label).join(", ")}</td>
+                      <td>
+                        <ExternalLink href={score.source_url}>Source</ExternalLink>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
       ) : null}
       {refusals.length > 0 ? (
         <>

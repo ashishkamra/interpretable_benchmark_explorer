@@ -60,15 +60,17 @@ export function ModelPage({ dataset, base, path, id }: { dataset: Dataset; base:
       ))}
       {others.length > 0 ? (
         <section>
-          <h2>Reported, but no primary selected</h2>
+          <h2>Other reported runs</h2>
           <ul>
             {others.map((score) => {
               const benchmark = benchmarkOf(dataset, score.benchmark_id);
               return (
                 <li key={score.id}>
                   <a href={href(base, `/benchmarks/${score.benchmark_id}`)}>{benchmark?.name ?? score.benchmark_id}</a>{" "}
-                  {score.benchmark_version}: {score.value ?? "n/a"} {score.metric}. Not primary because the configuration
-                  or version is incomplete, or an editor has not chosen one.
+                  {score.benchmark_version}: {score.value ?? "n/a"} {score.metric}.{" "}
+                  {score.primary
+                    ? "Primary for this version, not the current benchmark version."
+                    : "Not primary. A required configuration field is missing or another run was selected."}
                 </li>
               );
             })}
