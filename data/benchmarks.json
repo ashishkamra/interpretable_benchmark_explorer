@@ -148,15 +148,16 @@
     "version": "full",
     "version_policy": "score_defined",
     "one_sentence": "Can the model answer extremely hard, expert-written questions across many domains that require deep knowledge and reasoning?",
-    "how_to_read": "Never display a bare HLE number. Name the subset and whether tools were used. A with-tools score is an agent result. HLE-Diamond is a different test and must not be filed here.",
+    "how_to_read": "This row is Scale Labs' public-question board, not the text-only board and not HLE-Diamond. The page says every listed model was run on all public questions. It does not name tools, so tools stay undisclosed. Temperature is 0 when that page says the run was configurable.",
     "long_description": "The finalized public set has 2,500 questions. Labs also report text-only and with-tools slices. Those slices are different tests.\n\nHLE-Diamond, announced in September 2026, is a separate set. Do not merge it into this record.\n\nSite: https://lastexam.ai/\nPaper: https://arxiv.org/abs/2501.14249",
     "capability_tags": [
       "expert-knowledge"
     ],
     "caveats": [
-      "Text-only, multimodal, with-tools, and without-tools slices are different tests.",
+      "Text-only is a different Scale leaderboard. Do not merge it here.",
       "HLE-Diamond is not this benchmark.",
-      "Put the slice name in benchmark_version, such as full or text."
+      "Scale does not publish a tools flag. Do not assume the run was tool-free.",
+      "The September 17, 2026 note on the page is about HLE-Rolling, not this table."
     ],
     "sample_size": 2500,
     "small_n_threshold": 200,
@@ -167,8 +168,7 @@
     "harness_sensitive": false,
     "splits": [],
     "required_config": [
-      "subset",
-      "tools"
+      "subset"
     ],
     "human_baseline_note": null,
     "human_baseline_source": null,
@@ -253,7 +253,7 @@
     "version": "2",
     "version_policy": "exact",
     "one_sentence": "Can the model solve novel abstract visual puzzles that require fluid intelligence rather than memorized patterns?",
-    "how_to_read": "Effort, cost, and number of attempts are part of the result. A max-effort score and a default-effort score do not belong in one cell. Do not draw a human line from memory; wait for the ARC Prize source.",
+    "how_to_read": "Effort is part of the result and comes from the parenthetical on the ARC Prize board. Attempt count is not published there, so it is left blank. The board JSON stores a 0-1 fraction; the results pages publish the percentage, which is what we store. High is the primary when the results page leads with that effort. Other efforts stay as separate runs.",
     "long_description": "Built to resist contamination and scale-alone pattern matching. Still separates frontier systems, often at different reasoning-effort levels.\n\nSite: https://arcprize.org/arc-agi/2",
     "capability_tags": [
       "abstract-reasoning",
@@ -261,8 +261,8 @@
     ],
     "caveats": [
       "Reasoning effort changes the score.",
-      "Attempt budget is part of the result.",
-      "Do not invent a human baseline."
+      "ARC Prize does not publish an attempt count on the verified board.",
+      "Semi-private verified scores are not the public-eval task table."
     ],
     "sample_size": null,
     "small_n_threshold": null,
@@ -273,11 +273,10 @@
     "harness_sensitive": false,
     "splits": [],
     "required_config": [
-      "effort",
-      "samples"
+      "effort"
     ],
-    "human_baseline_note": null,
-    "human_baseline_source": null,
+    "human_baseline_note": "The ARC Prize semi-private leaderboard records a human panel score of 100% on this set.",
+    "human_baseline_source": "https://arcprize.org/leaderboard",
     "official_url": "https://arcprize.org/arc-agi/2",
     "meaningful_gap": null,
     "meaningful_gap_note": null,

@@ -180,5 +180,174 @@
       "api": null
     },
     "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "gpt-5-4",
+    "name": "GPT-5.4",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2026-03-04",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "kimi-k3",
+    "name": "Kimi K3",
+    "provider": "Moonshot AI",
+    "open_closed": "closed",
+    "release_date": "2026-07-16",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "claude-fable-5-1",
+    "name": "Claude Fable 5.1",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2026-09-01",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "gpt-6-astra",
+    "name": "GPT-6 Astra",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2026-09-02",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "gpt-6-luna",
+    "name": "GPT-6 Luna",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2026-09-22",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "claude-opus-5-5",
+    "name": "Claude Opus 5.5",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2026-09-22",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "gemini-3-8-flash",
+    "name": "Gemini 3.8 Flash",
+    "provider": "Google",
+    "open_closed": "closed",
+    "release_date": "2026-09-02",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "glm-5-3-flash",
+    "name": "GLM-5.3-Flash",
+    "provider": "Z.ai",
+    "open_closed": "closed",
+    "release_date": "2026-08-26",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "gpt-6-1-sol",
+    "name": "GPT-6.1 Sol",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2026-09-29",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "deepseek-v4-1-flash",
+    "name": "DeepSeek V4.1 Flash",
+    "provider": "DeepSeek",
+    "open_closed": "closed",
+    "release_date": "2026-09-10",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "grok-4-7",
+    "name": "Grok 4.7",
+    "provider": "xAI",
+    "open_closed": "closed",
+    "release_date": "2026-09-21",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "claude-haiku-5-5",
+    "name": "Claude Haiku 5.5",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2026-10-07",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
+  },
+  {
+    "id": "gemini-4-argon",
+    "name": "Gemini 4 Argon",
+    "provider": "Google",
+    "open_closed": "closed",
+    "release_date": "2026-10-13",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date is modelReleaseDate on the ARC Prize leaderboard JSON. open/closed is closed because that row does not say the weights are public."
   }
 ]
