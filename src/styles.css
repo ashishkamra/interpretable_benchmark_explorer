@@ -137,6 +137,17 @@ h3 { font-size: 1rem; margin: 0 0 0.35rem; }
 .standing.mid { color: var(--mid); }
 .standing.lower { color: var(--lower); }
 .glance-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+.source-cite {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0.35rem 0 0.2rem;
+  font-style: normal;
+  font-size: 0.88rem;
+}
+.source-cite a { overflow-wrap: anywhere; }
+.source-where, .source-date, .source-missing { color: var(--text-dim); }
+.source-date { color: var(--text-faint); }
 
 details { margin-top: 0.4rem; }
 summary { cursor: pointer; color: var(--copper); }

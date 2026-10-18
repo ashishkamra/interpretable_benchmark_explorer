@@ -3,7 +3,7 @@ import { badgesFor, disclosed, formatValue, standingLabel } from "../lib/interpr
 import { benchmarkTitle } from "../lib/labels";
 import type { Headline } from "../lib/present";
 import { href } from "../lib/paths";
-import { ExternalLink } from "./RichText";
+import { ExternalLink, SourceCite } from "./RichText";
 
 export function ScoreCard({
   headline,
@@ -36,8 +36,8 @@ export function ScoreCard({
       </ul>
       <div className="glance-links">
         {standingText ? <span className={`standing ${standing ?? ""}`}>{standingText}</span> : null}
-        <ExternalLink href={score.source_url}>Source</ExternalLink>
       </div>
+      <SourceCite url={score.source_url} location={score.source_location} date={score.date_reported} />
       <details>
         <summary>What this means</summary>
         <div className="expand">

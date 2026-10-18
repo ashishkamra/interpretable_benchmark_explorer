@@ -36,3 +36,26 @@ export function ExternalLink({ href, children }: { href: string | null; children
     </a>
   );
 }
+
+export function SourceCite({
+  url,
+  location,
+  date,
+}: {
+  url: string | null;
+  location?: string | null;
+  date?: string | null;
+}) {
+  if (!url || !/^https:\/\//i.test(url)) {
+    return <span className="source-missing">No source URL</span>;
+  }
+  return (
+    <cite className="source-cite">
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        {url}
+      </a>
+      {location ? <span className="source-where">{location}</span> : null}
+      {date ? <span className="source-date">Reported {date}</span> : null}
+    </cite>
+  );
+}

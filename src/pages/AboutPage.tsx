@@ -13,9 +13,11 @@ export function AboutPage({
   repo: string | null;
 }) {
   const manifest = dataset.manifest;
-  const dataUrl = repo ? `https://github.com/${repo}/blob/main/data` : null;
-  const designUrl = repo ? `https://github.com/${repo}/blob/main/Interpretable_Benchmark_Explorer_Design_Doc.md` : null;
-  const runUrl = repo && manifest.run_id ? `https://github.com/${repo}/actions/runs/${manifest.run_id}` : null;
+  const repoName = repo || "ashishkamra/interpretable_benchmark_explorer";
+  const blob = (file: string) => `https://github.com/${repoName}/blob/main/${file}`;
+  const raw = (file: string) => `https://raw.githubusercontent.com/${repoName}/main/${file}`;
+  const runUrl = manifest.run_id ? `https://github.com/${repoName}/actions/runs/${manifest.run_id}` : null;
+  const files = ["data/scores.json", "data/models.json", "data/benchmarks.json", "data/refusals.json", "data/manifest.json"];
   return (
     <Layout base={base} path={path}>
       <h1>About</h1>
@@ -49,15 +51,20 @@ export function AboutPage({
         <li>That a small gap is meaningful when no editorial threshold is on file. The gap note is omitted instead of invented.</li>
         <li>A sitewide rank, Elo, or weighted index.</li>
       </ul>
+      <h2>Sources you can open</h2>
       <p>
-        {designUrl ? <a href={designUrl}>Design document</a> : "The design document is in the repository."}{" "}
-        {dataUrl ? (
-          <>
-            Raw JSON: <a href={dataUrl}>data/</a>
-          </>
-        ) : (
-          "The raw JSON is the data/ directory in the repository."
-        )}
+        Every score on a card and in a table links to the page the number was read from, plus where on that page to look.
+        The dataset itself is public JSON:
+      </p>
+      <ul>
+        {files.map((file) => (
+          <li key={file}>
+            <a href={blob(file)}>{file}</a> · <a href={raw(file)}>raw</a>
+          </li>
+        ))}
+      </ul>
+      <p>
+        <a href={blob("Interpretable_Benchmark_Explorer_Design_Doc.md")}>Design document</a>
       </p>
     </Layout>
   );

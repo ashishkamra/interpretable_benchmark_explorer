@@ -1,5 +1,5 @@
 import { Layout } from "../components/Layout";
-import { ExternalLink } from "../components/RichText";
+import { SourceCite } from "../components/RichText";
 import { ScoreCard } from "../components/ScoreCard";
 import { formatValue } from "../lib/interpret";
 import { href } from "../lib/paths";
@@ -26,11 +26,17 @@ export function ModelPage({ dataset, base, path, id }: { dataset: Dataset; base:
       <p className="lede">
         {model.provider} · released {model.release_date}. Open weights does not mean an unrestricted license.
       </p>
-      <p className="glance-links">
-        <ExternalLink href={model.links.model_card}>Model card</ExternalLink>
-        <ExternalLink href={model.links.huggingface}>Hugging Face</ExternalLink>
-        <ExternalLink href={model.links.api}>API</ExternalLink>
-      </p>
+      <div className="stack">
+        <p>
+          Model card: <SourceCite url={model.links.model_card} />
+        </p>
+        <p>
+          Hugging Face: <SourceCite url={model.links.huggingface} />
+        </p>
+        <p>
+          API: <SourceCite url={model.links.api} />
+        </p>
+      </div>
       {model.notes ? <p>{model.notes}</p> : null}
       {groups.length === 0 ? <p>No primary scores yet. Checked sources are listed on each benchmark page.</p> : null}
       {groups.map((group) => (
@@ -70,7 +76,8 @@ export function ModelPage({ dataset, base, path, id }: { dataset: Dataset; base:
                   {score.benchmark_version}: {score.value ?? "n/a"} {score.metric}.{" "}
                   {score.primary
                     ? "Primary for this version, not the current benchmark version."
-                    : "Not primary. A required configuration field is missing or another run was selected."}
+                    : "Not primary. A required configuration field is missing or another run was selected."}{" "}
+                  <SourceCite url={score.source_url} location={score.source_location} date={score.date_reported} />
                 </li>
               );
             })}

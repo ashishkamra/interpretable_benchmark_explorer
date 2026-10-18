@@ -1,4 +1,5 @@
 import { Layout } from "../components/Layout";
+import { SourceCite } from "../components/RichText";
 import { formatValue } from "../lib/interpret";
 import { href, parseModelsParam } from "../lib/paths";
 import { compareRows } from "../lib/present";
@@ -63,7 +64,14 @@ export function ComparePage({
                       <a href={href(base, `/models/${cell.model.id}`)}>{cell.model.name}</a>
                     </h3>
                     {cell.score ? (
-                      <p className="number">{formatValue(cell.score.value, row.benchmark)}</p>
+                      <>
+                        <p className="number">{formatValue(cell.score.value, row.benchmark)}</p>
+                        <SourceCite
+                          url={cell.score.source_url}
+                          location={cell.score.source_location}
+                          date={cell.score.date_reported}
+                        />
+                      </>
                     ) : (
                       <p>Not reported</p>
                     )}

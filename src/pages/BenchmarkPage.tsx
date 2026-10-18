@@ -1,5 +1,5 @@
 import { Layout } from "../components/Layout";
-import { ExternalLink, RichText } from "../components/RichText";
+import { RichText, SourceCite } from "../components/RichText";
 import { badgesFor, formatValue } from "../lib/interpret";
 import { benchmarkTitle, tagLabel } from "../lib/labels";
 import { href } from "../lib/paths";
@@ -52,14 +52,14 @@ export function BenchmarkPage({
       {benchmark.human_baseline_note && benchmark.human_baseline_source ? (
         <p>
           Human anchor: {benchmark.human_baseline_note}{" "}
-          <ExternalLink href={benchmark.human_baseline_source}>Source</ExternalLink>
+          <SourceCite url={benchmark.human_baseline_source} />
         </p>
       ) : (
         <p>No human anchor is shown until both a note and a source URL are on file.</p>
       )}
       <p>
-        <ExternalLink href={benchmark.official_url}>Official source</ExternalLink>
-        {!benchmark.official_url ? " Official URL is not pinned yet. Scores still need their own source." : null}
+        Official benchmark page: <SourceCite url={benchmark.official_url} />
+        {!benchmark.official_url ? " Not pinned yet. Each score still needs its own source." : null}
       </p>
       <ul className="badges">
         {benchmark.capability_tags.map((tag) => (
@@ -109,7 +109,7 @@ export function BenchmarkPage({
                     <td>{score.configuration.harness ?? "not disclosed"}</td>
                     <td>{badgesFor(score, benchmark, dataset).map((badge) => badge.label).join(", ")}</td>
                     <td>
-                      <ExternalLink href={score.source_url}>Source</ExternalLink>
+                      <SourceCite url={score.source_url} location={score.source_location} date={score.date_reported} />
                     </td>
                   </tr>
                 );
@@ -150,7 +150,7 @@ export function BenchmarkPage({
                       <td>{score.configuration.harness ?? "not disclosed"}</td>
                       <td>{badgesFor(score, benchmark, dataset).map((badge) => badge.label).join(", ")}</td>
                       <td>
-                        <ExternalLink href={score.source_url}>Source</ExternalLink>
+                        <SourceCite url={score.source_url} location={score.source_location} date={score.date_reported} />
                       </td>
                     </tr>
                   );
@@ -167,7 +167,7 @@ export function BenchmarkPage({
             {refusals.map((refusal) => (
               <li key={refusal.id}>
                 {refusal.model_name}: {refusal.reason}{" "}
-                <ExternalLink href={refusal.source_url}>Source</ExternalLink>
+                <SourceCite url={refusal.source_url} date={refusal.date_observed} />
               </li>
             ))}
           </ul>
