@@ -1,1 +1,184 @@
-[]
+[
+  {
+    "id": "claude-4-5-haiku",
+    "name": "Claude 4.5 Haiku",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2025-10-15",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "claude-4-5-opus",
+    "name": "Claude 4.5 Opus",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2025-11-24",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "claude-4-5-sonnet",
+    "name": "Claude 4.5 Sonnet",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2025-09-29",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "claude-4-6-opus",
+    "name": "Claude 4.6 Opus",
+    "provider": "Anthropic",
+    "open_closed": "closed",
+    "release_date": "2026-02-05",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "deepseek-v3-2",
+    "name": "DeepSeek V3.2",
+    "provider": "DeepSeek",
+    "open_closed": "open",
+    "release_date": "2025-12-01",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "glm-5",
+    "name": "GLM 5",
+    "provider": "Z-AI",
+    "open_closed": "open",
+    "release_date": "2026-02-11",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "gpt-5-mini",
+    "name": "GPT 5 mini",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2025-08-07",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "gpt-5-2",
+    "name": "GPT 5.2",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2025-12-11",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "gpt-5-2-codex",
+    "name": "GPT 5.2 Codex",
+    "provider": "OpenAI",
+    "open_closed": "closed",
+    "release_date": "2025-12-11",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "gemini-3-flash",
+    "name": "Gemini 3 Flash",
+    "provider": "Google DeepMind",
+    "open_closed": "closed",
+    "release_date": "2025-12-17",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "gemini-3-pro",
+    "name": "Gemini 3 Pro",
+    "provider": "Google DeepMind",
+    "open_closed": "closed",
+    "release_date": "2025-11-18",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "kimi-k2-5",
+    "name": "Kimi K2.5",
+    "provider": "Moonshot AI",
+    "open_closed": "open",
+    "release_date": "2026-01-27",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "minimax-m2-5",
+    "name": "MiniMax M2.5",
+    "provider": "Minimax",
+    "open_closed": "open",
+    "release_date": "2026-02-12",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  },
+  {
+    "id": "qwen3-coder-480b-a35b-instruct",
+    "name": "Qwen3-Coder 480B/A35B Instruct",
+    "provider": "Qwen",
+    "open_closed": "open",
+    "release_date": "2025-07-22",
+    "links": {
+      "model_card": null,
+      "huggingface": null,
+      "api": null
+    },
+    "notes": "Release date and open/closed flag come from the SWE-bench Verified leaderboard row. No model-card URL was on that row."
+  }
+]

@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "id": "refuse-swe-bench-pro-2026-10-18",
+    "model_name": "collection pass",
+    "benchmark_id": "swe-bench-pro",
+    "source_url": "https://github.com/scaleapi/SWE-bench_Pro-os",
+    "reason": "No official public score table with split and harness was retrieved on 2026-10-18. Aggregator rows were not copied.",
+    "date_observed": "2026-10-18"
+  },
+  {
+    "id": "refuse-gpqa-diamond-2026-10-18",
+    "model_name": "collection pass",
+    "benchmark_id": "gpqa-diamond",
+    "source_url": "https://arxiv.org/abs/2311.12022",
+    "reason": "No current official score table naming tools was retrieved on 2026-10-18. Model-card numbers were not copied from aggregators.",
+    "date_observed": "2026-10-18"
+  },
+  {
+    "id": "refuse-terminal-bench-4-2026-10-18",
+    "model_name": "collection pass",
+    "benchmark_id": "terminal-bench",
+    "source_url": "https://www.tbench.ai/",
+    "reason": "The official Terminal-Bench 4.0 leaderboard is client-rendered. Harbor Hub did not return a citable table. Aggregator scores were not copied.",
+    "date_observed": "2026-10-18"
+  },
+  {
+    "id": "refuse-hle-2026-10-18",
+    "model_name": "collection pass",
+    "benchmark_id": "hle",
+    "source_url": "https://lastexam.ai/",
+    "reason": "The Quantitative Results table lists later models but still captions Dataset Updated April 3, 2025, and it does not name tools or subset. Those numbers were not entered.",
+    "date_observed": "2026-10-18"
+  },
+  {
+    "id": "refuse-livecodebench-2026-10-18",
+    "model_name": "collection pass",
+    "benchmark_id": "livecodebench",
+    "source_url": "https://livecodebench.github.io/",
+    "reason": "The LiveCodeBench site did not yield a citable date-window table in this pass. Aggregator scores were not copied.",
+    "date_observed": "2026-10-18"
+  },
+  {
+    "id": "refuse-arc-agi-2-2026-10-18",
+    "model_name": "collection pass",
+    "benchmark_id": "arc-agi-2",
+    "source_url": "https://arcprize.org/leaderboard",
+    "reason": "The ARC Prize leaderboard page did not include a citable ARC-AGI-2 score table in the fetched HTML. Numbers were not copied from secondary writeups.",
+    "date_observed": "2026-10-18"
+  }
+]
